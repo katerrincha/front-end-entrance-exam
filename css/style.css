@@ -26,10 +26,11 @@ body {
   flex-direction: column;
   gap: 20px;
 }
-.section-one {
+.section-one, .section-two, .section-three{
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: stretch;
+  align-self: flex-start;
   gap: 16px;
   width: 100%;
 }
@@ -153,7 +154,7 @@ h2 {
   padding: 12px;
   gap: 12px;
 }
-.experience-block, .experience-block-top  {
+.experience-block, .experience-block-green  {
   position: relative;
   display: flex;
   justify-content: flex-start;
@@ -254,8 +255,79 @@ h2 {
   font-weight: 500;
 }
 
-/*.tools-images {
-  flex: 1 1 50%;
-  object-fit: contain;
-
-}*/
+.education, .interests, .contacts {
+  background-color: #F0F0F0;
+  max-width: 268px;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 12px;
+  padding: 12px;
+  gap: 16px;
+}
+.education-blocks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+}
+.education-block-green, .education-block {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: flex-start;
+  max-width: 116px;
+  height: auto;
+  gap: 8px;
+  flex: 1;
+  padding: 8px;
+  border-radius: 10px;
+  background-color: white;
+}
+.education-block-green {
+  background-color: #28D979 ;
+  color: white;
+}
+.education-block p {
+  color: #149063;
+}
+.ed-year-heart {
+  display: flex;
+  justify-content: space-between;
+}
+.education h3{
+  font-size: 10px;
+}
+.education p{
+  font-size: 8px;
+  font-weight: 400;
+}
+.education h4{
+  font-weight: 400;
+}
+.interests-contacts-block {
+  display: flex;
+  flex-direction: column;
+  width: 267px;
+  height: auto;
+  gap: 20px;
+}
+.interests-block {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.inter-point {
+  padding: 4px 10px;
+  border-radius: 40px;
+  background-color: white;
+}
+.contacts {
+  background-color: black;
+  color: white;
+}
+.contacts h3 {
+  font-size: 10px;
+  font-weight: 400;
+}
