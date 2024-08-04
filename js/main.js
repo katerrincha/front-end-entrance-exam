@@ -2,9 +2,14 @@ import '../css/style.css'
 
 // реализация эффекта Material Wave 
 (function () {
-  var water = document.querySelectorAll('.btn');
+  /*var water = document.querySelectorAll('.btn');
   for (var i = 0; i < water.length; ++i) {
     water[i].addEventListener('mousedown', rippleEffect, false);
+  }*/
+
+  var form = document.querySelectorAll('[contenteditable="true"], .btn'); 
+  for (var i = 0; i < form.length; ++i) {
+    form[i].addEventListener('mousedown', rippleEffect, false);
   }
 })();
 
