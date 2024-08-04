@@ -1,7 +1,8 @@
 import '../css/style.css'
 
+// реализация эффекта Material Wave 
 (function () {
-  var water = document.querySelectorAll('.water');
+  var water = document.querySelectorAll('.btn');
   for (var i = 0; i < water.length; ++i) {
     water[i].addEventListener('mousedown', rippleEffect, false);
   }
@@ -31,37 +32,56 @@ function rippleEffect(e) {
   }, 750);
 }
 
+// реализация изменения текстовых элементов резюме
+try {
+  document.addEventListener('DOMContentLoaded', function() { 
+    const btn = document.getElementById('btn-pdf');
+    const form = document.querySelectorAll('[contenteditable="true"]'); //класс с возможностью изменения текста
+    const ls = localStorage;
 
+    //получаем данные из input
+    //сохраняем данные из localStorage для каждого редактируемого элемента
+    form.forEach((elem, key) => { 
+      try {
+        const newData = ls.getItem(`edit-${key}`);
+        if (newData) {
+          elem.textContent = newData;
+        }
+        elem.addEventListener('input', () => {
+          ls.setItem(`edit-${key}`, elem.textContent);
+        });
+      } catch (error) {
+        console.error('Error saving data');
+      }
+    });
+    
+    // реализация сохранения измененной страницы в формате pdf 
+   
+    const download_button = document.getElementById('btn-pdf');
+    const content = document.getElementById('app');
 
+    download_button.addEventListener ('click', async function () {
+        const filename = 'table_data.pdf';
+        try {
+            const opt = {
+                margin: 0.5,
+                filename: filename,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: {
+                    unit: 'in', format: 'letter',
+                    orientation: 'portrait'
+                }
+            };
+            await html2pdf().set(opt).
+                from(content).save();
+        } catch (error) {
+          console.error('Error creating PDF');
+        }
+    });
 
-document.addEventListener('DOMContentLoaded', () => { //событие сработает, когда документ готов 
-	const btn = document.getElementById('btn-pdf');
-	const elements = document.querySelectorAll('.editable'); //измененные поля
-	
-	elements.forEach((elem, index) => { //загружает сохр. данные из localStorage для каждого редактируемого элемента
-		const data = localStorage.getItem(`editable-${index}`);
-		if (data) {
-			elem.textContent = data;
-    }
-		elem.addEventListener('input', () => {
-			localStorage.setItem(`editable-${index}`, elem.textContent);
-		});
-	});
-	
-	btn.addEventListener('click', () => { //добавляем событие click кнопке
-		const { jsPDF } = window.jspdf;
-		const doc = new jsPDF();
-		const container = document.querySelector('.container');
-		doc.html(container, {
-			callback: function (doc) {
-				doc.save('Resume.pdf');
-			},
-			x: 5,
-			y: 5,
-			width: 200,
-      windowWidth: 595 
-		});
-	});
-});
-
+  });
+  } catch (error) {
+    console.error(error);
+}
 

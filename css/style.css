@@ -328,6 +328,8 @@ h2 {
   box-sizing: border-box;
 }
 .btn{
+  position: relative;
+  overflow: hidden;
   color: white;
   border: none;
   padding: 8px 14px;
@@ -342,10 +344,6 @@ h2 {
 }
 .btn:hover{
   box-shadow: 0 6px 15px 0 rgba(0,0,0,0.18);
-}
-.water{
-  position: relative;
-  overflow: hidden;
 }
 .ripple{
   position: absolute;
