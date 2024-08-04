@@ -35,7 +35,6 @@ function rippleEffect(e) {
 // реализация изменения текстовых элементов резюме
 try {
   document.addEventListener('DOMContentLoaded', function() { 
-    const btn = document.getElementById('btn-pdf');
     const form = document.querySelectorAll('[contenteditable="true"]'); //элементы с возможностью изменения текста
     const ls = localStorage;
 
