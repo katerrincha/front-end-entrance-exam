@@ -36,7 +36,7 @@ function rippleEffect(e) {
 try {
   document.addEventListener('DOMContentLoaded', function() { 
     const btn = document.getElementById('btn-pdf');
-    const form = document.querySelectorAll('[contenteditable="true"]'); //класс с возможностью изменения текста
+    const form = document.querySelectorAll('[contenteditable="true"]'); //элементы с возможностью изменения текста
     const ls = localStorage;
 
     //получаем данные из input
@@ -61,7 +61,7 @@ try {
     const content = document.getElementById('app');
 
     download_button.addEventListener ('click', async function () {
-        const filename = 'table_data.pdf';
+        const filename = 'Resume.pdf';
         try {
             const opt = {
                 margin: 0.5,
