@@ -140,6 +140,7 @@ h2 {
 .experience-block-job {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 8px;
 }
